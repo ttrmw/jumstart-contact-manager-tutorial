@@ -14,4 +14,8 @@ class PersonTest < ActiveSupport::TestCase
     assert_equal number_of_people, Person.count
   end
 
+  test 'Person has array of phone numbers' do
+    person = Person.create first_name: "foo", last_name: "bar"
+    assert_equal person.phone_numbers, []
+  end
 end
