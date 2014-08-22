@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  number: MyString
+  number: 123123
   person_id: 1
 
 two:
-  number: MyString
-  person_id: 1
+  number: 32123
+  person_id: 2

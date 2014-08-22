@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  first_name: MyString
-  last_name: MyString
+  first_name: Foo
+  last_name: Barson
 
 two:
-  first_name: MyString
-  last_name: MyString
+  first_name: Bar
+  last_name: Bazzington
