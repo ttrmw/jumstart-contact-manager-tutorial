@@ -5,12 +5,11 @@ class PhoneNumberViewTest < ActionDispatch::IntegrationTest
   include Capybara::DSL
 
   setup do
-
+    #any required setup
   end
 
   test 'phone number view displays phone number' do
-  	puts page.body
     visit(phone_number_path(PhoneNumber.first))
-    assert page.has_content?(PhoneNumber.first)
+    assert_equal true, page.has_content?(PhoneNumber.first.number)
   end
 end

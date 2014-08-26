@@ -7,3 +7,4 @@ one:
 two:
   number: 32123
   person_id: 2
+  person: one
