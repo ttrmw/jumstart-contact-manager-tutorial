@@ -4,7 +4,11 @@ class PhoneNumbersController < ApplicationController
   # GET /phone_numbers
   # GET /phone_numbers.json
   def index
-    @phone_numbers = PhoneNumber.all
+    if params[:person_id] == nil
+      @phone_numbers = PhoneNumber.all
+    else
+      @phone_numbers = Person.find(params[:person_id]).phone_numbers
+    end
   end
 
   # GET /phone_numbers/1
@@ -14,7 +18,7 @@ class PhoneNumbersController < ApplicationController
 
   # GET /phone_numbers/new
   def new
-    @phone_number = PhoneNumber.new
+    @phone_number = PhoneNumber.new(person_id: params[:person_id])
   end
 
   # GET /phone_numbers/1/edit
