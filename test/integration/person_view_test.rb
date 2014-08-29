@@ -34,4 +34,15 @@ class PersonViewTest < ActionDispatch::IntegrationTest
     page.click_button('Create Phone number')
     assert current_path == person_path(Person.first)
   end
+
+  test 'person view has links to edit phone numbers' do
+    p = Person.first
+    visit person_path(p)
+    p.phone_numbers.each do |phone|
+      assert page.has_xpath? "//a[@href='#{edit_phone_number_path(phone)}']"
+    end
+  end
+
 end
+
+

@@ -36,7 +36,7 @@ class PhoneNumbersControllerTest < ActionController::TestCase
 
   test "should update phone_number" do
     patch :update, id: @phone_number, phone_number: { number: @phone_number.number, person_id: @phone_number.person_id }
-    assert_redirected_to phone_number_path(assigns(:phone_number))
+    assert_redirected_to person_path(assigns(:phone_number).person)
   end
 
   test "should destroy phone_number" do

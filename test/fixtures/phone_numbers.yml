@@ -2,9 +2,8 @@
 
 one:
   number: 123123
-  person_id: 1
+  person: two
 
 two:
   number: 32123
-  person_id: 2
   person: one

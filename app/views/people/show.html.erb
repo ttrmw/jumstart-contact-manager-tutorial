@@ -13,7 +13,7 @@
 <p>
 	<strong>Phone Numbers:</strong>
 	<% @person.phone_numbers.each do |phone| %>
-		<li><%= phone.number %> </li>
+		<li><%= phone.number %> | <%= link_to 'Edit', edit_phone_number_path(phone) %></li>
 	<% end %>
 </p>
 <%= link_to 'Add phone number', new_person_phone_number_path(@person) %>
