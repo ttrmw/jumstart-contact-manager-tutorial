@@ -18,10 +18,10 @@ class PhoneNumbersControllerTest < ActionController::TestCase
 
   test "should create phone_number" do
     assert_difference('PhoneNumber.count') do
-      post :create, phone_number: { number: @phone_number.number, person_id: @phone_number.person_id }
+      post :create, phone_number: { number: @phone_number.number, person_id: Person.first.id}
     end
 
-    assert_redirected_to phone_number_path(assigns(:phone_number))
+    assert_redirected_to person_path(assigns(:phone_number).person)
   end
 
   test "should show phone_number" do

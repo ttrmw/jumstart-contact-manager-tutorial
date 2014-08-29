@@ -21,9 +21,17 @@ class PersonViewTest < ActionDispatch::IntegrationTest
     phone_no = '123999'
     visit person_path(Person.first)
     page.click_link('Add phone number')
-    page.fill_in('Number', with: phone_no) 
+    page.fill_in('Number', with: phone_no)
+    page.click_button('Create Phone number')
+    assert page.has_content?(phone_no)
+  end
+
+  test 'add phone number redirects to owner of new phone number' do
+    phone_no = '1239239'
+    visit person_path(Person.first)
+    page.click_link('Add phone number')
+    page.fill_in('Number', with: phone_no)
     page.click_button('Create Phone number')
     assert current_path == person_path(Person.first)
-    assert page.has_content?(phone_no)
   end
 end
