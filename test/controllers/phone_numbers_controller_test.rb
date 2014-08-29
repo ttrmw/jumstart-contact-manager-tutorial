@@ -44,6 +44,6 @@ class PhoneNumbersControllerTest < ActionController::TestCase
       delete :destroy, id: @phone_number
     end
 
-    assert_redirected_to phone_numbers_path
+    assert_redirected_to person_path(@phone_number.person)
   end
 end

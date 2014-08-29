@@ -15,7 +15,7 @@ class PhoneNumberViewTest < ActionDispatch::IntegrationTest
     assert current_path == person_path(PhoneNumber.first.person)
   end
 
-  test 'edit phone number changes phone number' do 
+  test 'edit phone number changes phone number' do
     p = Person.first.phone_numbers.first
     old_number = p.number
     visit edit_phone_number_path(p)
@@ -23,6 +23,19 @@ class PhoneNumberViewTest < ActionDispatch::IntegrationTest
     page.click_button('Update Phone number')
     assert page.has_content?('129392919')
     assert_not page.has_content? old_number
-  end 
+  end
+
+  test 'delete phone number redirects to owner of the phone number.' do
+    visit person_path(Person.first)
+    page.click_link('Destroy')
+    assert_equal current_path, person_path(Person.first)
+  end
+
+  test 'delete phone number removes phone number.' do
+    visit person_path(Person.first)
+    old_num = Person.first.phone_numbers.first
+    page.click_link('Destroy')
+    assert_not page.has_content? old_num
+  end
 end
 

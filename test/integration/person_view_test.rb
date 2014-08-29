@@ -17,7 +17,6 @@ class PersonViewTest < ActionDispatch::IntegrationTest
   end
 
   test 'add phone number link adds phone number' do
-    #skip('incorrectly implemented link to add phone number!')
     phone_no = '123999'
     visit person_path(Person.first)
     page.click_link('Add phone number')
@@ -40,6 +39,14 @@ class PersonViewTest < ActionDispatch::IntegrationTest
     visit person_path(p)
     p.phone_numbers.each do |phone|
       assert page.has_xpath? "//a[@href='#{edit_phone_number_path(phone)}']"
+    end
+  end
+
+  test 'person view has links to delete phone numbers' do
+    p = Person.first
+    visit person_path(p)
+    p.phone_numbers.each do |phone|
+      assert page.has_xpath? "//a[@href='#{phone_number_path(phone)}']"
     end
   end
 
