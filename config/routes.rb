@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :email_addresses
-
-  resources :phone_numbers
+  resources :email_addresses, :phone_numbers
 
   resources :people do
-     resources :phone_numbers
+     resources :phone_numbers, :email_addresses
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
