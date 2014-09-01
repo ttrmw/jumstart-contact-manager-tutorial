@@ -64,11 +64,15 @@ class PeopleController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_person
-      @person = Person.find(params[:id])
+      @person = Person.find(params[:id]) rescue not_found
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def person_params
       params.require(:person).permit(:first_name, :last_name)
+    end
+
+    def not_found
+        raise ActiveRecord::RecordNotFound.new('Person not found!')
     end
 end
